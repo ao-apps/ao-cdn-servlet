@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ao-cdn-servlet - Content delivery network (CDN) in a Servlet environment.
+Copyright (C) 2023  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
+
+This file is part of ao-cdn-servlet.
+
+ao-cdn-servlet is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+ao-cdn-servlet is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with ao-cdn-servlet.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.aoapps</groupId><artifactId>ao-oss-parent</artifactId><version>1.21.1-POST-SNAPSHOT</version>
+    <relativePath>../../parent/pom.xml</relativePath>
+  </parent>
+
+  <groupId>com.aoapps</groupId><artifactId>ao-cdn-servlet</artifactId><version>1.0.0-SNAPSHOT</version>
+  <packaging>bundle</packaging>
+
+  <properties>
+    <project.build.outputTimestamp>2023-03-26T05:29:31Z</project.build.outputTimestamp>
+    <module.name>com.aoapps.cdn.servlet</module.name>
+    <javadoc.breadcrumbs><![CDATA[<a target="${javadoc.target}" href="https://oss.aoapps.com/">AO OSS</a>
+/ <a target="${javadoc.target}" href="https://oss.aoapps.com/cdn/">CDN</a>
+/ <a target="${javadoc.target}" href="${project.url}">Servlet</a>]]></javadoc.breadcrumbs>
+    <!-- SonarQube -->
+    <sonar.projectKey>${project.groupId}:${project.artifactId}</sonar.projectKey>
+    <sonar.organization>ao-apps</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <!-- TODO: Implement tests -->
+    <sonar.coverage.exclusions>**.*</sonar.coverage.exclusions>
+  </properties>
+
+  <name>AO CDN Servlet</name>
+  <url>https://oss.aoapps.com/cdn/servlet/</url>
+  <description>Content delivery network (CDN) in a Servlet environment.</description>
+  <inceptionYear>2023</inceptionYear>
+
+  <licenses>
+    <license>
+      <name>GNU General Lesser Public License (LGPL) version 3.0</name>
+      <url>https://www.gnu.org/licenses/lgpl-3.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>AO Industries, Inc.</name>
+    <url>https://aoindustries.com/</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <name>AO Industries, Inc.</name>
+      <email>support@aoindustries.com</email>
+      <url>https://aoindustries.com/</url>
+      <organization>AO Industries, Inc.</organization>
+      <organizationUrl>https://aoindustries.com/</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/ao-apps/ao-cdn-servlet.git</connection>
+    <developerConnection>scm:git:git@github.com:ao-apps/ao-cdn-servlet.git</developerConnection>
+    <url>https://github.com/ao-apps/ao-cdn-servlet</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/ao-apps/ao-cdn-servlet/issues</url>
+  </issueManagement>
+
+  <ciManagement>
+    <system>Jenkins</system>
+    <url>https://jenkins.aoindustries.com/job/ao/job/oss/job/cdn/job/servlet/</url>
+  </ciManagement>
+  <!-- Only one allowed in POM:
+  <ciManagement>
+    <system>GitHub Actions</system>
+    <url>https://github.com/ao-apps/ao-cdn-servlet/actions</url>
+  </ciManagement>
+  -->
+
+  <repositories>
+    <!-- Repository required here, too, so can find parent -->
+    <repository>
+      <id>sonatype-nexus-snapshots-s01</id>
+      <name>Sonatype Nexus Snapshots S01</name>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <profiles>
+    <profile>
+      <id>offlineLinks</id><activation><file><exists>src/main/java</exists></file></activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId><artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>unpack.offlineLinks</id><phase>prepare-package</phase><goals><goal>unpack</goal></goals>
+                <configuration>
+                  <artifactItems>
+                    <!-- Direct -->
+                    <artifactItem>
+                      <groupId>com.aoapps</groupId><artifactId>ao-cdn-data</artifactId><classifier>javadoc</classifier>
+                      <includes>element-list, package-list</includes>
+                      <outputDirectory>${project.build.directory}/offlineLinks/com.aoapps/ao-cdn-data</outputDirectory>
+                    </artifactItem>
+                    <!-- ao-javadoc-offline: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><classifier>javadoc</classifier> -->
+                  </artifactItems>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId>
+            <configuration>
+              <offlineLinks combine.children="append">
+                <!-- Direct -->
+                <offlineLink>
+                  <url>https://oss.aoapps.com/cdn/data/apidocs/</url>
+                  <location>${project.build.directory}/offlineLinks/com.aoapps/ao-cdn-data</location>
+                </offlineLink>
+                <!-- ao-javadoc-offline: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><classifier>javadoc</classifier> -->
+              </offlineLinks>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.felix</groupId><artifactId>maven-bundle-plugin</artifactId>
+            <configuration>
+              <instructions>
+                <!--
+                  Releases use "Automatic-Module-Name" instead of "module-info.java"
+                  since has direct dependencies that are not yet modularized.
+                -->
+                <Automatic-Module-Name>${module.name}</Automatic-Module-Name>
+                <Private-Package>!.</Private-Package>
+              </instructions>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Direct -->
+      <dependency>
+        <groupId>com.aoapps</groupId><artifactId>ao-cdn-data</artifactId><version>1.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+      </dependency>
+      <!-- javaee-web-api-bom: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId> -->
+      <!-- Transitive -->
+      <dependency>
+        <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId><version>5.3.0${POST-SNAPSHOT}</version>
+      </dependency>
+      <!-- BOM -->
+      <dependency>
+        <groupId>com.aoapps</groupId><artifactId>javaee-web-api-bom</artifactId><version>7.0.1${POST-SNAPSHOT}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <!-- Direct -->
+    <dependency>
+      <groupId>com.aoapps</groupId><artifactId>ao-cdn-data</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId>
+    </dependency>
+  </dependencies>
+</project>
