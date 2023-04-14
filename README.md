@@ -23,7 +23,7 @@ Content delivery network (CDN) in a Servlet environment.
 * [Project Home](https://oss.aoapps.com/cdn/servlet/)
 * [Changelog](https://oss.aoapps.com/cdn/servlet/changelog)
 * [API Docs](https://oss.aoapps.com/cdn/servlet/apidocs/)
-* [Maven Central Repository](https://central.sonatype.com/search?namespace=com.aoapps&q=a%3Aao-cdn-servlet)
+* [Maven Central Repository](https://central.sonatype.com/artifact/com.aoapps/ao-cdn-servlet)
 * [GitHub](https://github.com/ao-apps/ao-cdn-servlet)
 
 ## Contact Us
