@@ -39,5 +39,6 @@ along with ao-cdn-servlet.  If not, see <https://www.gnu.org/licenses/>.
     shortTitle="API Docs"
     datePublished="2023-03-26T05:29:31Z"
     dateModified="${ao:getLastModified('index.html')}"
+    allowRobots="false"
   />
 </jsp:root>
