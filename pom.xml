@@ -85,7 +85,7 @@ along with ao-cdn-servlet.  If not, see <https://www.gnu.org/licenses/>.
 
   <ciManagement>
     <system>Jenkins</system>
-    <url>https://jenkins.aoindustries.com/job/ao/job/oss/job/cdn/job/servlet/</url>
+    <url>https://jenkins.aoindustries.com/job/ao/job/oss/job/cdn/job/servlet-javaee/</url>
   </ciManagement>
   <!-- Only one allowed in POM:
   <ciManagement>
