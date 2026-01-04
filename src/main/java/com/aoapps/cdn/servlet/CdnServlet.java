@@ -1,6 +1,6 @@
 /*
  * ao-cdn-servlet - Content delivery network (CDN) in a Servlet environment.
- * Copyright (C) 2023  AO Industries, Inc.
+ * Copyright (C) 2023, 2025, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -24,11 +24,11 @@
 package com.aoapps.cdn.servlet;
 
 import com.aoapps.cdn.data.CdnData;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * TODO: Implement CDN Servlet.

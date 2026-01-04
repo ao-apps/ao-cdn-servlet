@@ -1,6 +1,6 @@
 /*
  * ao-cdn-servlet - Content delivery network (CDN) in a Servlet environment.
- * Copyright (C) 2023  AO Industries, Inc.
+ * Copyright (C) 2023, 2025, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -24,5 +24,5 @@ module com.aoapps.cdn.servlet {
   exports com.aoapps.cdn.servlet;
   // Direct
   requires com.aoapps.cdn.data; // <groupId>com.aoapps</groupId><artifactId>ao-cdn-data</artifactId>
-  requires javax.servlet.api; // <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId>
+  requires jakarta.servlet; // <groupId>jakarta.servlet</groupId><artifactId>jakarta.servlet-api</artifactId>
 }

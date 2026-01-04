@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 /*
  * ao-cdn-servlet - Content delivery network (CDN) in a Servlet environment.
- * Copyright (C) 2023, 2024, 2025  AO Industries, Inc.
+ * Copyright (C) 2023, 2024, 2025, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -35,10 +35,10 @@ def upstreamProjects = [
 
   // Direct
   'data', // <groupId>com.aoapps</groupId><artifactId>ao-cdn-data</artifactId>
-  // No Jenkins: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId>
+  // No Jenkins: <groupId>jakarta.servlet</groupId><artifactId>jakarta.servlet-api</artifactId>
 
   // BOM
-  '../javaee-web-api-bom', // <groupId>com.aoapps</groupId><artifactId>javaee-web-api-bom</artifactId>
+  '../jakartaee-web-profile-bom', // <groupId>com.aoapps</groupId><artifactId>jakartaee-web-profile-bom</artifactId>
 ]
 
 /******************************************************************************************
