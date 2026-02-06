@@ -158,7 +158,7 @@ along with ao-cdn-servlet.  If not, see <https://www.gnu.org/licenses/>.
     <dependencies>
       <!-- Direct -->
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>ao-cdn-data</artifactId><version>0.1.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+        <groupId>com.aoapps</groupId><artifactId>ao-cdn-data</artifactId><version>0.1.0${POST-SNAPSHOT}</version>
       </dependency>
       <!-- jakartaee-web-profile-bom: <groupId>jakarta.servlet</groupId><artifactId>jakarta.servlet-api</artifactId> -->
       <!-- Transitive -->
